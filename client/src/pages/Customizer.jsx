@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+// const dotenv = require("dotenv");
 import { useSnapshot } from "valtio";
 import state from "../store";
 import { fadeAnimation, slideAnimation } from "../config/motion";
@@ -55,8 +56,9 @@ const Customizer = () => {
 
     try {
       setGeneratingImg(true);
-
-      const response = await fetch("http://localhost:8080/api/v1/dalle", {
+      const url = import.meta.env.VITE_BACKEND_URL + "api/v1/dalle";
+      console.log("url", url);
+      const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
